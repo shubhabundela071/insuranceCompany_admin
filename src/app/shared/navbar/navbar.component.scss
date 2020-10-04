@@ -1,0 +1,13 @@
+.noti-container{
+    span{
+        word-break: break-all;
+    }
+}
+.notification-dropdown{
+    overflow-y: auto;
+    height: 450px;
+}
+.noti-list{
+    position: unset;
+    height: unset;
+}

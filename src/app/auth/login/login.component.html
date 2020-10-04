@@ -1,0 +1,53 @@
+<section class="full-height-wrapper bg-theme-grey auth-bg">
+  <div class="section-content full-height-wrapper">
+    <div class="centered-box shadow-lg">
+      <div class="box-image bg-theme-yellow loginBox">
+        <figure>
+         
+          <div class="logoLogin">Insurance Company</div>
+        </figure>
+      </div>
+      <div class="box-content bg-white">
+        <div class="content">
+          <h3 class="heading font-medium color-dark-grey">LOGIN</h3>
+          <p class="sub-heading font-medium color-light-grey">Welcome back, please login to your account.</p>
+          <!-- Login Form Start -->
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form custom-form">
+            <div class="field-outer">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <input type="email" placeholder="User Name" formControlName="email_id">
+              <div
+                *ngIf="loginForm.controls['email_id'].hasError('required') && (loginForm.controls['email_id'].dirty || loginForm.controls['email_id'].touched) && isLoginSubmitted"
+                class="error" style="font-family: auto;font-size: 16px;">
+                Please enter User email 
+              </div>
+              <div *ngIf="loginForm.controls.email_id.errors?.email && isLoginSubmitted" class="error">
+                Please provide valid email id !
+              </div>
+            </div>  
+            <div class="field-outer">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <input type="password" placeholder="Password" formControlName="password">
+              <div
+                *ngIf="loginForm.controls['password'].hasError('required')  && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched) && isLoginSubmitted"
+                class="error" style="font-family: auto;font-size: 16px;">
+                Please enter a password !
+              </div>
+            </div>  
+            <!-- // class="action-items d-flex justify-content-end" -->
+            <div class="d-flex justify-content-between">
+              <div class="rememberme">
+                <input type="checkbox" id="accept" class="d-inline-block w-auto mr-2">
+                <label for="accept">Remember me</label>
+              </div>
+              <a href="#" class="font-medium forgot-link" routerLink="../recover-password"> Forgot your password?</a>
+            </div>  
+            <div style="padding-top: 36px" class="text-center">
+              <button  type="submit" title="Login" class="custom-btn theme-btn text-center">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

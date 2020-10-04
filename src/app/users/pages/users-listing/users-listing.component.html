@@ -1,0 +1,123 @@
+<div class="section-heading section-head-with-button">
+  <div class="section-title">
+    <p>Person List</p>
+    
+  </div>
+</div>
+<div class="content section-bottom-spacing table-outer">
+  <div *ngIf="UserListing" class="tabular-data-wrapper registered-user-table">
+    <p-table [value]="UserListing" [responsive]="true" styleClass="faq-table" [paginator]="true" [rows]="8"
+      [alwaysShowPaginator]="true" #dt >
+      <ng-template pTemplate="caption">
+      <!-- //Search Data -->
+        <form [formGroup]="searchUserForm" class="event-list-form" (submit)="searchUser()">
+          <div class="filter-main d-flex justify-content-between">
+            <div class="search-main">
+              <div class="search-outer">
+                <input class="form-control" type="text" placeholder="Search by Name, Email" formControlName="search">    
+                <i class="fa fa-search blue"></i>
+              </div>
+              <button class="btn btn-primary btn-raised">Search</button>
+            </div>
+            <div class="back-button-wrapper text-right" [routerLink]="['/view-payment']">
+              <button type="button" class="btn btn-primary btn-raised rounded">View Payment</button>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+      <div class="section-padding bg-white box-shadow">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+             <th>S.No.</th>
+            <th>Full Name</th>
+            <th>Email ID</th>
+            <th>Contact Number</th>
+            <th>Car Name</th>
+            <th>Car Model</th>
+            <th>Company Name</th>
+            
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-key let-i="rowIndex">
+            <tr [pSelectableRow]="rowData">
+            <td>{{ i + 1 }}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">Name</span>{{item.name}}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">email</span>{{item.email}}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">phoneNo</span>{{item.countryCode+item.phoneNo}}</td>
+  
+            <td style="word-break: break-all;"><span class="ui-column-title">car Name</span>{{(item.carName) ? item.car.carName : '----'}}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">car Model</span>{{(item.car.carModel) ? item.car.carModel : '----'}}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">car Model</span>{{(item.car.companyName) ? item.car.companyName : '----'}}</td>
+    
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="text-center text-danger" colspan="5">No Record Found.</td>
+          </tr>
+        </ng-template>
+      </div>
+    </p-table>
+  </div>
+</div>
+
+
+
+
+<!-- <p-dialog [draggable]="false" [header]="itemToEdit? 'Customer Details':'Add New Role'" modal="true"
+  [(visible)]="displayAddEditAbout" [responsive]="true" [style]="{minWidth: '800px'}" appendTo="body" maximizable="true"
+  blockScroll="true" [closeOnEscape]="false" (onHide)="closeAddEditCompany()">
+  <div class="dialog-content">
+    <form class="custom-form" [formGroup]="addEditCompanyForm">
+      <div class="custom-form-control" style="text-align: center;border-radius: 100%;margin-bottom: 0px;">
+         <input #myInput name="company_logo-upload" type="file" (change)="uploadImage($event, 'company_logo')"> 
+        <img [src]="addEditCompanyForm.value.profilePic || 'assets/project-images/City-bg.png'" height="200" width="200"
+          style="
+              border-radius: 100%;
+          " />
+      </div>
+      <div class="custom-form-control">
+        <span class="key">Name</span>
+        <span class="value">
+          <input type="text" readonly name="name" id="name" formControlName="name">
+        </span>
+        <span class="key">Email</span>
+        <span class="value">
+          <input type="text" name="email" id="email" formControlName="email" readonly>
+        </span>
+        <span class="key">PhoneNo</span>
+        <span class="value">
+          <input type="text" name="phoneNo" id="phoneNo" formControlName="phoneNo" readonly>
+        </span>
+        <span class="key">Login Type</span>
+        <span class="value">
+          <input type="text" name="loginType" id="loginType" formControlName="loginType" readonly>
+        </span>
+        <span class="key">City</span>
+        <span class="value">
+          <input type="text" name="city" id="city" formControlName="city" readonly>
+        </span>
+        <span class="key">State</span>
+        <span class="value">
+          <input type="text" name="state" id="state" formControlName="state" readonly>
+        </span>
+        <span class="key">Address</span>
+        <span class="value">
+          <textarea _ngcontent-wmm-c14="" class="form-control" name="address" id="address" formControlName="address"
+            placeholder="Enter address!" rows="3"></textarea>
+        </span>
+
+        <span class="key">Short Info</span>
+        <span class="value">
+          <textarea _ngcontent-wmm-c14="" class="form-control" name="shortInfo" id="shortInfo"
+            formControlName="shortInfo" placeholder="Enter shortInfo!" rows="3"></textarea>
+        </span>
+
+      </div>
+      <div class="custom-form-contEmailrol decision-box">
+        <button type="reset" title="Cancel" class="custom-btn red-btn text-center button-with-icon cancel"
+          (click)="closeAddEditCompany()"><i class="fa fa-times icon" aria-hidden="true"></i>Cancel</button>
+      </div>
+    </form>
+  </div>
+</p-dialog> -->

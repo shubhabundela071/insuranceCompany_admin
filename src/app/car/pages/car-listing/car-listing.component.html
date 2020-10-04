@@ -1,0 +1,64 @@
+<div class="section-heading section-head-with-button">
+  <div class="section-title">
+    <p>car List</p>
+    <h3>isCarRegistered component</p>
+    
+  </div>
+</div>
+<div class="content section-bottom-spacing table-outer">
+  <div *ngIf="UserListing" class="tabular-data-wrapper registered-user-table">
+    <p-table [value]="UserListing" [responsive]="true" styleClass="faq-table" [paginator]="true" [rows]="8"
+      [alwaysShowPaginator]="true" #dt >
+      <ng-template pTemplate="caption">
+      <!-- //Search Data -->
+        <form [formGroup]="searchUserForm" class="event-list-form" (submit)="searchUser()">
+          <div class="filter-main d-flex justify-content-between">
+            <div class="search-main">
+              <div class="search-outer">
+                <input class="form-control" type="text" placeholder="Search by Name, Email" formControlName="search">    
+                <i class="fa fa-search blue"></i>
+              </div>
+              <button class="btn btn-primary btn-raised">Search</button>
+            </div>
+            <div class="back-button-wrapper text-right" [routerLink]="['/view-payment']">
+              <button type="button" class="btn btn-primary btn-raised rounded">View Payment</button>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+      <div class="section-padding bg-white box-shadow">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+             <th>S.No.</th>
+            <th>Car Name</th>
+            <th>Car Model</th>
+            <th>Car Number</th>
+            <th>Car Color</th>
+            <th>Company Name</th>
+            
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-key let-i="rowIndex">
+            <tr [pSelectableRow]="rowData">
+            <td>{{ i + 1 }}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">carname</span>{{item.carName}}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">carmodel</span>{{item.carModel}}</td>
+            <td style="word-break: break-all;"><span class="ui-column-title">carno</span>{{item.carNo}}</td>
+  
+            <td style="word-break: break-all;"><span class="ui-column-title">car Name</span>{{item.carcolor}}</td>
+            
+            <td style="word-break: break-all;"><span class="ui-column-title">car Model</span>{{(item.companyName) ? item.companyName : '----'}}</td>
+    
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="text-center text-danger" colspan="5">No Record Found.</td>
+          </tr>
+        </ng-template>
+      </div>
+    </p-table>
+  </div>
+</div>
+
+
